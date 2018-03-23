@@ -1,0 +1,15 @@
+﻿body {
+}
+
+.form-self{
+    float:right;
+    width:50%;
+    margin-bottom:100px;
+}
+
+.checkbox {
+    margin-bottom: 30px;
+}
+#warning{
+    color:red;
+}

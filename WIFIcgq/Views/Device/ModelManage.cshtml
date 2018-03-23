@@ -1,0 +1,55 @@
+﻿<link rel="stylesheet" href="~/css/Device.css" type="text/css" /> 
+<script src="~/js/User.Manage.Device.js"></script>
+
+
+<div class="form-self">
+    <form>
+        <label>可以添加的模块</label>
+        <div class="checkbox">
+            <label id="noadmodel">
+                <input id="addad" type="checkbox" value="">
+                AD模块
+            </label>
+            <label id="nodamodel">
+                <input id="addda" type="checkbox" value="">
+                DA模块
+            </label>
+            <label id="noiomodel">
+                <input id="addio" type="checkbox" value="">
+                IO模块
+            </label>
+        </div>
+    </form>
+    <button id="add" class="btn btn-default">添加</button>
+</div>
+
+<div class="form-self">
+    <form>
+        <label>我的模块</label>
+        <div class="checkbox">
+            <label id="admodel">
+                <input id="delad" type="checkbox" value="">
+                AD模块
+            </label>
+            <label id="damodel">
+                <input id="delda" type="checkbox" value="">
+                DA模块
+            </label>
+            <label id="iomodel">
+                <input id="delio" type="checkbox" value="">
+                IO模块
+            </label>
+        </div>
+
+    </form>
+    <button id="del" class="btn btn-default">删除</button>
+</div>
+
+
+<form asp-controller="Device" asp-action="SaveChanges">
+    <textarea name="mark0" id="mark0" class="hidden">@ViewData["0"]</textarea>  @*AD模块*@
+    <textarea name="mark1" id="mark1" class="hidden">@ViewData["1"]</textarea>  @*DA模块*@
+    <textarea name="mark2" id="mark2" class="hidden">@ViewData["2"]</textarea>  @*IO模块*@
+    <input type="submit" class="btn btn-default" value="保存" />
+    <button asp-controller="User" asp-action="Back" class="btn btn-default">返回</button>
+</form>

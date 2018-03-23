@@ -1,0 +1,19 @@
+﻿@*<script src="~/js/User.Check.Register.js"></script>*@
+<link rel="stylesheet" href="~/css/Login.css" type="text/css" />
+@if (ViewData["Warning"] != null)
+{
+    <p>@Html.ViewData["Warning"]</p>
+}
+<form asp-controller="User">
+    <div class="form-group">
+        <label>用户名</label>
+        <input id="username" name="username" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>密码</label>
+        <input id="password" name="password" type="password" class="form-control">
+    </div>
+    <button  asp-action="AddUser" id="submit" class="btn btn-default" type="submit">注册</button>
+    <button asp-action="BackToIndex" class="btn btn-default">返回</button>
+</form>
+

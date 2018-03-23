@@ -1,0 +1,21 @@
+﻿<script src="~/js/Device.Add.js"></script>
+<script src="~/js/Device.Show.js"></script>
+<link rel="stylesheet" href="~/css/Device.css" type="text/css" />
+
+<label>添加设备号</label><label id="warning"></label>
+<input id="deviceid" name="deviceid" class="form-control">
+<button id="adddevice" type="button" class="btn btn-default">添加</button>
+<button id="refresh" type="button" class="btn btn-default">刷新</button>
+<form> <button asp-controller="User" asp-action="Back" class="btn btn-default">返回</button></form>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                设备名称
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="showdevice"></tbody>
+</table>

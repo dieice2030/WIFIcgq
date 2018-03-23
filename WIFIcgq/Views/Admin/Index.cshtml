@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WIFIcgq.Models.UserInfo>
+
+@{
+    ViewData["Title"] = "用户管理";
+}
+
+<h2>用户管理</h2>
+
+<p>
+    <a asp-action="Create">添加新用户</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                用户名
+            </th>
+            <th>
+                密码
+            </th>
+            <th>
+                性别
+            </th>
+            <th>
+                地址
+            </th>
+            <th>
+                电话
+            </th>
+            <th>
+                公司
+            </th>
+            <th>
+                部门
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassWord)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coporation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UserName">修改</a> |
+                <a asp-action="Delete" asp-route-id="@item.UserName">删除</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

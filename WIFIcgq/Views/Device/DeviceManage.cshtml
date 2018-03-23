@@ -1,0 +1,183 @@
+﻿<script src="~/js/Test.js"></script>
+<script src="~/js/User.Manage.js"></script>
+<script src="~/js/Device.js"></script>
+<link rel="stylesheet" href="~/css/DeviceM.css" />
+
+<text id="mark" class="hidden">0</text>
+<text id="mark_da" class="hidden">0</text>
+<text id="mark_io" class="hidden">0</text>
+<text id="timer" class="hidden"></text>
+<text id="test" class="hidden"></text>
+
+<textarea name="mark0" id="mark0" class="hidden">@ViewData["0"]</textarea>  @*AD模块*@
+<textarea name="mark1" id="mark1" class="hidden">@ViewData["1"]</textarea>  @*DA模块*@
+<textarea name="mark2" id="mark2" class="hidden">@ViewData["2"]</textarea>  @*IO模块*@
+
+<div class="col-md-12">
+    <form>
+        <div id="showmodel" class="btn-group" data-toggle="buttons">
+            <label id="btn_ad" class="btn btn-primary">
+                <input type="radio" name="options" id="option1" autocomplete="off"> AD模块
+            </label>
+            <label id="btn_da" class="btn btn-primary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> DA模块
+            </label>
+            <label id="btn_io" class="btn btn-primary hidden">
+                <input type="radio" name="options" id="option3" autocomplete="off"> IO模块
+            </label>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                我的设备
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="../Device/AddDevice">设备管理</a></li>
+                <li><a href="../Device/ModelManage">模块管理</a></li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+<div class="col-md-12 display-parameter form-inline">
+    <label>选择设备</label>
+    <select name="choosedevice" id="choosedevice" class="form-control"></select>
+    <label>发送数据间隔</label>
+    <input id="sendinterval" class="form-control interval" />
+    <select class="form-control">
+        <option>秒</option>
+        <option>分</option>
+        <option>时</option>
+        <option>天</option>
+    </select>
+    <label>接受数据间隔</label>
+    <input id="recieveinterval" class="form-control interval" />
+    <select class="form-control">
+        <option>秒</option>
+        <option>分</option>
+        <option>时</option>
+        <option>天</option>
+    </select>
+</div>
+
+@*AD模块*@
+<div id="partAD" class="panel panel-default col-md-12 hidden" style="height:545.4px;">
+    <label>AD模块</label>
+    <br />
+    <label>通道号</label>
+    <input type="text" name="senddata" id="senddata" class="form-inline form-control" placeholder="请输入通道号" />
+    <button id="send" class="btn btn-default">发送</button>
+    <br />
+    <label id="templatead"></label>
+    <div id="ADchart" style="width: 1000px; height:400px;"></div>
+</div>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('ADchart'));
+
+    // 指定图表的配置项和数据
+    var base = new Date();
+    var date = [];
+    var data = [];
+    var now = new Date(base);
+    var text = $("#test").text();
+
+    function addData(shift) {
+        var text = $("#test").text();
+        now = [now.getHours(), now.getMinutes(), now.getSeconds()].join(':');
+        date.push(now);
+        data.push(text);
+
+        if (shift) {
+            date.shift();
+            data.shift();
+        }
+
+        now = new Date();
+    }
+
+    for (var i = 1; i < 100; i++) {
+        addData();
+    }
+
+    option = {
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+        },
+        yAxis: {
+            boundaryGap: [0, '50%'],
+            type: 'value'
+        },
+        series: [
+            {
+                name: '成交',
+                type: 'line',
+                smooth: true,
+                symbol: 'none',
+                type: 'line',
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+
+    setInterval(function () {
+        addData(true);
+        myChart.setOption({
+            xAxis: {
+                data: date
+            },
+            series: [{
+                name: '成交',
+                data: data
+            }]
+        });
+    }, 500);
+</script>
+@*AD模块*@
+
+@*DA模块*@
+<div id="partDA" class="panel panel-default col-md-12 hidden" style="height:545.4px;">
+    <label>DA模块</label>
+    <div class="form-inline">
+        <label min="0" max="5" step="0.015">DA1/PWM</label>
+        <input id="da1" type="range" />
+        <label min="0" max="5" step="0.015">DA2/PWM</label>
+        <input id="da2" type="range" />
+        <label min="0" max="5" step="0.015">DA3/PWM</label>
+        <input id="da3" type="range" />
+    </div>
+    <button id="send_da" class="btn btn-default">发送</button>
+</div>
+@*DA模块*@
+
+@*IO模块*@
+<div id="partIO" class="panel panel-default col-md-12 hidden" style="height:545.4px;">
+    <label>IO模块</label>
+    <div class="form-inline">
+        <div class="form-group">
+            <label>Port1</label>
+            <input id="port1" type="text" class="form-control" placeholder="port1">
+        </div>
+        <br />
+        <div class="form-group">
+            <label>Port2</label>
+            <input id="port2" type="text" class="form-control" placeholder="port2">
+        </div>
+        <br />
+    </div>
+    <div class="form-inline">
+        <div class="form-group">
+            <label>Port1</label>
+            <text id="showport1"></text>
+        </div>
+        <div class="form-group">
+            <label>Port2</label>
+            <text id="showport2"></text>
+        </div>
+    </div>
+    <button id="send_io" class="btn btn-default">发送</button>
+</div>
+@*IO模块*@

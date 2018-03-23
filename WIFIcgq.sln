@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WIFIcgq", "WIFIcgq\WIFIcgq.csproj", "{38E797CB-511B-475E-87D0-217361B6B9DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38E797CB-511B-475E-87D0-217361B6B9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E797CB-511B-475E-87D0-217361B6B9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E797CB-511B-475E-87D0-217361B6B9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E797CB-511B-475E-87D0-217361B6B9DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3BFC6F22-270C-4079-9AC9-64FA7CD3D362}
+	EndGlobalSection
+EndGlobal

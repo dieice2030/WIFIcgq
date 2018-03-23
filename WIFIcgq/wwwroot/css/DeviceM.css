@@ -1,0 +1,14 @@
+﻿body {
+}
+
+.display-parameter {
+    float: right;
+    margin: 10px;
+}
+
+#sendinterval{
+    width:60px;
+}
+#recieveinterval {
+    width: 60px;
+}

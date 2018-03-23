@@ -1,0 +1,32 @@
+﻿body {
+    background-image: url("../images/login_background.jpg")
+}
+
+#login{
+    padding-top:20%;
+}
+
+p{
+    color:red;
+}
+
+.verigroup {
+    max-width: 280px;
+}
+
+#veritext{
+    max-width:208px;
+}
+#imgVerify{
+    border:0;
+    padding:1px 0;
+}
+/*.veribox{
+    width:10%;
+    float:left;
+}
+#veribigbox {
+
+    left: 50%;
+
+}*/

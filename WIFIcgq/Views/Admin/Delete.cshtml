@@ -1,0 +1,26 @@
+﻿@model WIFIcgq.Models.UserInfo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>删除</h2>
+
+<h3>确定删除该用户?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            用户名
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="UserName" />
+        <input type="submit" value="删除" class="btn btn-default" /> |
+        <a asp-action="Index">返回</a>
+    </form>
+</div>
