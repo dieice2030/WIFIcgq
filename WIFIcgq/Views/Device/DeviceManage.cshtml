@@ -8,6 +8,8 @@
 <text id="mark_io" class="hidden">0</text>
 <text id="timer" class="hidden"></text>
 <text id="test" class="hidden"></text>
+<text id="annothertimer" class="hidden"></text>
+<text id="echarttimer"></text>
 
 <textarea name="mark0" id="mark0" class="hidden">@ViewData["0"]</textarea>  @*AD模块*@
 <textarea name="mark1" id="mark1" class="hidden">@ViewData["1"]</textarea>  @*DA模块*@
@@ -42,22 +44,24 @@
 <div class="col-md-12 display-parameter form-inline">
     <label>选择设备</label>
     <select name="choosedevice" id="choosedevice" class="form-control"></select>
-    <label>发送数据间隔</label>
+    @*<label>发送数据间隔</label>
     <input id="sendinterval" class="form-control interval" />
-    <select class="form-control">
+    <select id="sendunit" class="form-control">
         <option>秒</option>
         <option>分</option>
         <option>时</option>
         <option>天</option>
-    </select>
+    </select>*@
     <label>接受数据间隔</label>
     <input id="recieveinterval" class="form-control interval" />
-    <select class="form-control">
+    <select id="recieveunit" class="form-control">
         <option>秒</option>
         <option>分</option>
         <option>时</option>
         <option>天</option>
     </select>
+    <button id="intervalbutton" class="btn btn-default">确定</button>
+    <button id="stopinterval" class="btn btn-default">取消</button>
 </div>
 
 @*AD模块*@
@@ -73,68 +77,8 @@
 </div>
 
 <script type="text/javascript">
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('ADchart'));
 
-    // 指定图表的配置项和数据
-    var base = new Date();
-    var date = [];
-    var data = [];
-    var now = new Date(base);
-    var text = $("#test").text();
 
-    function addData(shift) {
-        var text = $("#test").text();
-        now = [now.getHours(), now.getMinutes(), now.getSeconds()].join(':');
-        date.push(now);
-        data.push(text);
-
-        if (shift) {
-            date.shift();
-            data.shift();
-        }
-
-        now = new Date();
-    }
-
-    for (var i = 1; i < 100; i++) {
-        addData();
-    }
-
-    option = {
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-        },
-        yAxis: {
-            boundaryGap: [0, '50%'],
-            type: 'value'
-        },
-        series: [
-            {
-                name: '成交',
-                type: 'line',
-                smooth: true,
-                symbol: 'none',
-                type: 'line',
-            }
-        ]
-    };
-
-    myChart.setOption(option);
-
-    setInterval(function () {
-        addData(true);
-        myChart.setOption({
-            xAxis: {
-                data: date
-            },
-            series: [{
-                name: '成交',
-                data: data
-            }]
-        });
-    }, 500);
 </script>
 @*AD模块*@
 

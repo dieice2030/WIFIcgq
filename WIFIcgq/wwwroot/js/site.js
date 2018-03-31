@@ -1,54 +1,62 @@
 ﻿// Write your JavaScript code.
 
+$(document).ready(function () {
 
-$("button#send").click(function () {
-    var mark = $("#mark").text();
-    var timer = $("#timer");
-    var adchart = $("#ADchart");
-    if (mark == 0) {
-        timer.text(setInterval("send()", 500));
-        $("#mark").text(1);
-        $("#send").html("停止");
-        adchart.removeClass("hidden");
-    }
-    else {
-        clearInterval(timer.text());
-        $("#mark").text(0);
-        $("#send").html("发送");
-        $("#test").text("");
-        adchart.addClass("hidden");
-    }
+    $("button#send").click(function () {
+        var mark = $("#mark").text();
+        var timer = $("#timer");
+        var adchart = $("#ADchart");
+
+        if (mark == 0) {
+            timer.text(setInterval("send()", 500));
+            $("#mark").text(1);
+            $("#send").html("停止");
+            adchart.removeClass("hidden");
+
+        }
+        else {
+            clearInterval(timer.text());
+            $("#mark").text(0);
+            $("#send").html("发送");
+            $("#test").text("");
+            adchart.addClass("hidden");
+        }
+
+
+    })
+
+    $("button#send_da").click(function () {
+        var mark = $("#mark_da").text();
+        var timer = $("#timer");
+        if (mark == 0) {
+            timer.text(setInterval("send_da()", 500));
+            $("#mark_da").text(1);
+            $("#send_da").html("停止");
+        }
+        else {
+            clearInterval(timer.text());
+            $("#mark_da").text(0);
+            $("#send_da").html("发送");
+        }
+    })
+
+    $("button#send_io").click(function () {
+        var mark = $("#mark_io").text();
+        var timer = $("#timer");
+        if (mark == 0) {
+            timer.text(setInterval("send_io()", 500));
+            $("#mark_io").text(1);
+            $("#send_io").html("停止");
+        }
+        else {
+            clearInterval(timer.text());
+            $("#mark_io").text(0);
+            $("#send_io").html("发送");
+        }
+    })
 })
 
-$("button#send_da").click(function () {
-    var mark = $("#mark_da").text();
-    var timer = $("#timer");
-    if (mark == 0) {
-        timer.text(setInterval("send_da()", 500));
-        $("#mark_da").text(1);
-        $("#send_da").html("停止");
-    }
-    else {
-        clearInterval(timer.text());
-        $("#mark_da").text(0);
-        $("#send_da").html("发送");
-    }
-})
 
-$("button#send_io").click(function () {
-    var mark = $("#mark_io").text();
-    var timer = $("#timer");
-    if (mark == 0) {
-        timer.text(setInterval("send_io()", 500));
-        $("#mark_io").text(1);
-        $("#send_io").html("停止");
-    }
-    else {
-        clearInterval(timer.text());
-        $("#mark_io").text(0);
-        $("#send_io").html("发送");
-    }
-})
 
 function send() {
     var data = $("#senddata").val();
